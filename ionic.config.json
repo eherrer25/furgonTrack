@@ -1,5 +1,7 @@
 {
   "name": "furgonTrack",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

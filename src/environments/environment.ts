@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase : {
+    apiKey: "AIzaSyCMHcjF06zIqlqa60Wx-oppUd-VloJSSes",
+    authDomain: "furgontrack.firebaseapp.com",
+    databaseURL: "https://furgontrack.firebaseio.com",
+    projectId: "furgontrack",
+    storageBucket: "furgontrack.appspot.com",
+    messagingSenderId: "797772461433",
+    appId: "1:797772461433:web:a938124928f179747f6ba8"
+  }
 };
 
 /*
