@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,8 @@ export class DashboardPage implements OnInit {
   userEmail: string;
 
   constructor(private navCtrl: NavController,
-    private authService: AuthenticationService) { }
+    private authService: AuthenticationService,
+    private menu: MenuController) { }
 
   ngOnInit() {
     if(this.authService.userDetails()){
@@ -31,6 +33,20 @@ export class DashboardPage implements OnInit {
     .catch(error => {
       console.log(error);
     })
+  }
+
+  openFirst() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  openEnd() {
+    this.menu.open('end');
+  }
+
+  openCustom() {
+    this.menu.enable(true, 'custom');
+    this.menu.open('custom');
   }
 
 }

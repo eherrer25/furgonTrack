@@ -30,6 +30,16 @@ export class RegisterPage implements OnInit {
       ])),
     });
   }
+  validation_messages = {
+    'email': [
+      { type: 'required', message: 'Email is required.' },
+      { type: 'pattern', message: 'Please enter a valid email.' }
+    ],
+    'password': [
+      { type: 'required', message: 'Password is required.' },
+      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+    ]
+  };
 
   tryRegister(value){
     this.authService.registerUser(value)
