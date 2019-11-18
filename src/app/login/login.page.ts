@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,7 @@ export class LoginPage implements OnInit {
 
   validations_form: FormGroup;
   errorMessage: string = '';
+  isAdmin: '';
 
   constructor( private navCtrl: NavController,
     private authService: AuthenticationService,
@@ -32,12 +36,12 @@ export class LoginPage implements OnInit {
 
   validation_messages = {
     'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Please enter a valid email.' }
+      { type: 'required', message: 'Email es requerido.' },
+      { type: 'pattern', message: 'Ingresar email valido.' }
     ],
     'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 5 characters long.' }
+      { type: 'required', message: 'Password es requerido.' },
+      { type: 'minlength', message: 'Password debe tener al menos 5 caracteres.' }
     ]
   };
  
@@ -45,12 +49,25 @@ export class LoginPage implements OnInit {
   loginUser(value){
     this.authService.loginUser(value)
     .then(res => {
-      console.log(res);
       this.errorMessage = "";
-      this.navCtrl.navigateForward('/dashboard');
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          firebase
+            .firestore()
+            .doc(`/userProfile/${user.uid}`)
+            .get()
+            .then(userProfileSnapshot => {
+              if(userProfileSnapshot.data().isAdmin){
+                this.navCtrl.navigateForward('/dashboard');
+              }else{
+                this.navCtrl.navigateForward('/menu-conductor');
+              }
+            });
+        }
+      });
     }, err => {
       this.errorMessage = err.message;
-    })
+    });  
   }
  
   goToRegisterPage(){

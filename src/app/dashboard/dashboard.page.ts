@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,10 +12,13 @@ import { MenuController } from '@ionic/angular';
 export class DashboardPage implements OnInit {
 
   userEmail: string;
+  uid: string;
+  type: string;
 
   constructor(private navCtrl: NavController,
     private authService: AuthenticationService,
-    private menu: MenuController) { }
+    private menu: MenuController,
+    private router: Router) { }
 
   ngOnInit() {
     if(this.authService.userDetails()){
@@ -35,18 +39,13 @@ export class DashboardPage implements OnInit {
     })
   }
 
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
+  add_parents() {
+    this.router.navigate(['parents']);
   }
+  
 
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
+  navigate() {
+    this.router.navigate(['students']);
   }
 
 }
