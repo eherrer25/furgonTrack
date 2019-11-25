@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuAdminPage } from './menu-admin.page';
+import { MenuParentPage } from './menu-parent.page';
 
-describe('MenuAdminPage', () => {
-  let component: MenuAdminPage;
-  let fixture: ComponentFixture<MenuAdminPage>;
+describe('MenuParentPage', () => {
+  let component: MenuParentPage;
+  let fixture: ComponentFixture<MenuParentPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuAdminPage ],
+      declarations: [ MenuParentPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenuAdminPage);
+    fixture = TestBed.createComponent(MenuParentPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
