@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Menu-Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            Bienvenido {{userEmail}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-button (click)="add_students()"><ion-icon size="small" slot="icon-only" name="add"></ion-icon> Agregar Estudiante</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>  
+
+</ion-content>

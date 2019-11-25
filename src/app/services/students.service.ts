@@ -8,8 +8,8 @@ export class StudentsService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  create_NewStudent(record) {
-    return this.firestore.collection('students').add(record);
+  create_NewStudent(user_id,record) {
+    return this.firestore.doc('users/'+user_id).collection('students').add(record);
   }
  
   read_Students() {

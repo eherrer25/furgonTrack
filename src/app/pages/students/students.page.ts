@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { StudentsService } from './../../services/students.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-students',
@@ -15,8 +16,9 @@ export class StudentsPage implements OnInit {
   studentAddress: string;
   validations_form: FormGroup;
   errorMessage: string = '';
+  user_id: string;
 
-  constructor(private studentService : StudentsService,private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthenticationService,private studentService : StudentsService,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.studentService.read_Students().subscribe(data => {
@@ -60,11 +62,14 @@ export class StudentsPage implements OnInit {
   };
 
   CreateRecord() {
+    if(this.authService.userDetails()){
+      this.user_id = this.authService.userDetails().email;
+    }
     let record = {};
     record['Name'] = this.studentName;
     record['Age'] = this.studentAge;
     record['Address'] = this.studentAddress;
-    this.studentService.create_NewStudent(record).then(resp => {
+    this.studentService.create_NewStudent(this.user_id,record).then(resp => {
       this.studentName = "";
       this.studentAge = undefined;
       this.studentAddress = "";

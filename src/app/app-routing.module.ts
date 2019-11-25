@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'users', loadChildren: './pages/users/users.module#UsersPageModule' },
   { path: 'students', loadChildren: './pages/students/students.module#StudentsPageModule' },
   { path: 'menu-conductor', loadChildren: './menu-conductor/menu-conductor.module#MenuConductorPageModule' },
-  { path: 'parents', loadChildren: './pages/parents/parents.module#ParentsPageModule' }
+  { path: 'parents', loadChildren: './pages/parents/parents.module#ParentsPageModule' },
+  { path: 'menu-admin', loadChildren: './menu-admin/menu-admin.module#MenuAdminPageModule' }
 ];
 
 @NgModule({

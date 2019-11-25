@@ -25,6 +25,17 @@
           <ion-input type="text" placeholder="Dirección" [(ngModel)]="studentAddress"></ion-input>
         </ion-item>
       </ion-col>
+      <ion-col>
+          <ion-list>
+              <ion-list-header>Conductor</ion-list-header>
+              <ion-item>
+                <ion-select placeholder="Seleccionar">
+                  <ion-select-option value="user_id">Conductor 1</ion-select-option>
+                  <ion-select-option value="user_id">Conductor 2</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>

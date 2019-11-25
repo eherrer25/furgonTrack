@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
             .get()
             .then(userProfileSnapshot => {
               if(userProfileSnapshot.data().isAdmin){
-                this.navCtrl.navigateForward('/dashboard');
+                this.navCtrl.navigateForward('/menu-admin');
               }else{
                 this.navCtrl.navigateForward('/menu-conductor');
               }
