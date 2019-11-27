@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
     <ion-title>
-      Students Crud
+        Estudiantes
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,31 +13,20 @@
  
   <ion-grid fixed>
     <ion-row>
-      <ion-col>
+      <ion-col size="12">
         <ion-item>
           <ion-input type="text" placeholder="Nombre" [(ngModel)]="studentName"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col>
+      <ion-col size="12">
         <ion-item>
           <ion-input type="number" placeholder="Edad" [(ngModel)]="studentAge"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col>
+      <ion-col size="12">
         <ion-item>
           <ion-input type="text" placeholder="Dirección" [(ngModel)]="studentAddress"></ion-input>
         </ion-item>
-      </ion-col>
-      <ion-col>
-          <ion-list>
-              <ion-list-header>Conductor</ion-list-header>
-              <ion-item>
-                <ion-select placeholder="Seleccionar">
-                  <ion-select-option value="user_id">Conductor 1</ion-select-option>
-                  <ion-select-option value="user_id">Conductor 2</ion-select-option>
-                </ion-select>
-              </ion-item>
-            </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>

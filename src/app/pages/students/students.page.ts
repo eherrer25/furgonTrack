@@ -21,7 +21,8 @@ export class StudentsPage implements OnInit {
   constructor(private authService: AuthenticationService,private studentService : StudentsService,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.studentService.read_Students().subscribe(data => {
+    
+    this.studentService.read_Students(this.authService.userDetails().uid).subscribe(data => {
  
       this.students = data.map(e => {
         return {
@@ -63,7 +64,7 @@ export class StudentsPage implements OnInit {
 
   CreateRecord() {
     if(this.authService.userDetails()){
-      this.user_id = this.authService.userDetails().email;
+      this.user_id = this.authService.userDetails().uid;
     }
     let record = {};
     record['Name'] = this.studentName;
@@ -76,14 +77,15 @@ export class StudentsPage implements OnInit {
       this.errorMessage = "";
       console.log(resp);
     })
-      .catch(error => {
-        this.errorMessage = error.message;
-        console.log(error);
-      });
+    .catch(error => {
+      this.errorMessage = error.message;
+      console.log(error);
+    });
   }
  
   RemoveRecord(rowID) {
-    this.studentService.delete_Student(rowID);
+    this.user_id = this.authService.userDetails().uid;
+    this.studentService.delete_Student(rowID,this.user_id);
   }
  
   EditRecord(record) {
@@ -94,11 +96,12 @@ export class StudentsPage implements OnInit {
   }
  
   UpdateRecord(recordRow) {
+    this.user_id = this.authService.userDetails().uid;
     let record = {};
     record['Name'] = recordRow.EditName;
     record['Age'] = recordRow.EditAge;
     record['Address'] = recordRow.EditAddress;
-    this.studentService.update_Student(recordRow.id, record);
+    this.studentService.update_Student(recordRow.id, record,this.user_id);
     recordRow.isEdit = false;
   }
 

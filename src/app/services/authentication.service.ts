@@ -16,6 +16,15 @@ export class AuthenticationService {
         err => reject(err))
     })
    }
+
+   updatePassword(value){
+    return new Promise<any>((resolve, reject) => {
+      firebase.auth().currentUser.updatePassword(value)
+      .then(
+        res => resolve(res),
+        err => reject(err))
+    })
+   }
   
    loginUser(value){
     return new Promise<any>((resolve, reject) => {

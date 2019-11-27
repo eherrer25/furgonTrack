@@ -12,15 +12,15 @@ export class StudentsService {
     return this.firestore.doc('users/'+user_id).collection('students').add(record);
   }
  
-  read_Students() {
-    return this.firestore.collection('students').snapshotChanges();
+  read_Students(user_id) {
+    return this.firestore.doc('users/'+user_id).collection('students').snapshotChanges();
   }
  
-  update_Student(record_id,record){
-    this.firestore.doc('students/' + record_id).update(record);
+  update_Student(record_id,record,user_id){
+    this.firestore.doc('users/'+user_id).collection('students').doc(record_id).update(record);
   }
  
-  delete_Student(record_id) {
-    this.firestore.doc('students/' + record_id).delete();
+  delete_Student(record_id,user_id) {
+    this.firestore.doc('users/'+user_id).collection('students').doc(record_id).delete();
   }
 }

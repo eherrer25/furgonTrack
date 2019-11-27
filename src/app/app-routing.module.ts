@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'students', loadChildren: './pages/students/students.module#StudentsPageModule' },
   { path: 'menu-conductor', loadChildren: './menu-conductor/menu-conductor.module#MenuConductorPageModule' },
   { path: 'parents', loadChildren: './pages/parents/parents.module#ParentsPageModule' },
-  { path: 'menu-parent', loadChildren: './menu-parent/menu-parent.module#MenuParentPageModule' }
+  { path: 'menu-parent', loadChildren: './menu-parent/menu-parent.module#MenuParentPageModule' },  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' }
+
 ];
 
 @NgModule({

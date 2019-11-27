@@ -20,6 +20,7 @@ export class MenuConductorPage implements OnInit {
   ngOnInit() {
     if(this.authService.userDetails()){
       this.userEmail = this.authService.userDetails().email;
+      console.log(this.authService.userDetails());
     }else{
       this.navCtrl.navigateBack('');
     }
@@ -27,6 +28,10 @@ export class MenuConductorPage implements OnInit {
 
   navigateStudent() {
     this.router.navigate(['students']);
+  }
+
+  add_parent() {
+    this.router.navigate(['register']);
   }
 
   openFirst() {

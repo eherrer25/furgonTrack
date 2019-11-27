@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>Configuraciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form class="form" [formGroup]="validations_form"  (ngSubmit)="tryChangePassword(validations_form.value)">
+        <ion-item>
+          <ion-label  position="floating" color="primary">Password</ion-label>
+          <ion-input type="password" formControlName="password" class="form-controll" required></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.password">
+            <div class="error-message" *ngIf="validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <ion-button  class="submit-btn" type="submit"  [disabled]="!validations_form.valid">Register</ion-button>
+        <label class="error-message">{{errorMessage}}</label>
+        <label class="success-message">{{successMessage}}</label>
+      </form>
+</ion-content>
