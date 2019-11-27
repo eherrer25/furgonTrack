@@ -1,7 +1,8 @@
 {
   "name": "furgonTrack",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
